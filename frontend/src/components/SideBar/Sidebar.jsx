@@ -29,9 +29,13 @@ const AdminSidebar = () => {
     { to: '/admin/approve-venue', label: 'Approve Venue', icon: faCalendarCheck },
   ];
 
+
+  const handleGoToAdminPage = ()=>{
+    navigate('/admin')
+  }
   return (
     <aside className="w-64 min-h-screen bg-gradient-to-b from-pink-100 to-pink-200 shadow-xl fixed top-0 left-0 flex flex-col">
-      <div className="py-6 px-6 text-center font-bold text-3xl text-rose-800 border-b border-rose-300 tracking-wide">
+      <div className="py-6 px-6 text-center font-bold text-3xl text-rose-800 border-b border-rose-300 tracking-wide cursor-pointer" onClick={handleGoToAdminPage}>
         Admin Panel
       </div>
 
@@ -52,7 +56,7 @@ const AdminSidebar = () => {
         ))}
         <button
           onClick={handleLogout}
-          className="mt-auto flex items-center gap-3 px-5 py-3 bg-transparent text-rose-800 hover:bg-rose-100 hover:shadow-md rounded-xl transition-all duration-200"
+          className="mt-auto flex items-center gap-3 px-5 py-3 bg-transparent text-rose-800 hover:bg-rose-100 hover:shadow-md rounded-xl transition-all duration-200 cursor-pointer"
         >
           <FontAwesomeIcon icon={faSignOutAlt} className="text-rose-500" />
           <span className="text-lg">Logout</span>
