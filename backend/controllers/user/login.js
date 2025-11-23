@@ -8,7 +8,7 @@ const loginUser = async (req, res) => {
   const { user_name, password } = req.body;
 
   try {
-    const query = "SELECT * FROM \"user\" WHERE user_name = $1";
+    const query = "SELECT * FROM users WHERE user_name = $1";
     const result = await pool.query(query, [user_name]);
 
     if (result.rows.length === 0) {

@@ -6,7 +6,7 @@ const getAllOwners  = async (req, res) => {
   try {
     const query = `
       SELECT id, first_name, last_name, user_name, role
-      FROM "user"
+      FROM users
       WHERE role = 'owner';
     `;
     const result = await pool.query(query);

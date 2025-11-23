@@ -7,7 +7,7 @@ const getVenueBookings = async (req, res) => {
     const query = `
       SELECT b.reservation_date, b.guest_amount, u.first_name, u.last_name
       FROM booking b
-      JOIN "user" u ON b.user_id = u.id
+      JOIN users u ON b.user_id = u.id
       WHERE b.venue_id = $1;
     `;
     const { rows } = await pool.query(query, [venueId]);

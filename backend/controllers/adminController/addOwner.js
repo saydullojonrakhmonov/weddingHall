@@ -10,7 +10,7 @@ const createOwner = async (req, res) => {
   }
 
   try {
-    const existing = await pool.query('SELECT * FROM "user" WHERE "user_name" = $1', [user_name]);
+    const existing = await pool.query('SELECT * FROM users WHERE user_name = $1', [user_name]);
     if (existing.rows.length > 0) {
       return res.status(400).json({ error: "User already exists" });
     }
@@ -20,7 +20,7 @@ const createOwner = async (req, res) => {
 
 
     const query = `
-      INSERT INTO "user" ("first_name", "last_name", "user_name", "password", "role")
+      INSERT INTO users (first_name, last_name, user_name, password, role)
       VALUES ($1, $2, $3, $4, 'owner')
       RETURNING *
     `;

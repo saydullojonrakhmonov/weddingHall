@@ -14,7 +14,7 @@ const bookVenue = async (req, res) => {
   }
 
   try {
-    const userResult = await pool.query('SELECT first_name, last_name FROM "user" WHERE id = $1', [user_id]);
+    const userResult = await pool.query('SELECT first_name, last_name FROM users WHERE id = $1', [user_id]);
     if (userResult.rows.length === 0) {
       return res.status(404).json({ error: 'User not found' });
     }
