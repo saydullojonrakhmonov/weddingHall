@@ -8,4 +8,10 @@ export default defineConfig({
     react(),
     tailwindcss()
   ],
+  build: {
+    outDir: 'dist', // default, Netlify will use this
+  },
+  server: {
+    port: 5173,
+  },
 })
