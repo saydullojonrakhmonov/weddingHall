@@ -5,12 +5,12 @@ import Home from './pages/Home/Home';
 import NoPage from './pages/NotFound/NoPage';
 import VenueDetail from './components/VenueDetail/VenueDetail';
 import VenueBooking from './pages/Booking/VenueBooking';
-import Register from './pages/User/Register';
-import MyBookings from './pages/User/MyBookings.jsx';
 import AdminRoutes from './routes/AdminRoutes';
 import OwnerRoutes from './routes/OwnerRoutes';
 import Contact from './pages/Contact/Contact';
 import About from './pages/About/About';
+import Register from './pages/Temp_User/Register';
+import MyBookings from './pages/Temp_User/MyBookings';
 
 
 
