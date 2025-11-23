@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from '../../utils/axiosInstance';
+import instance from "../../utils/axiosInstance";
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -22,7 +22,7 @@ const Login = () => {
     setError("");
 
     try {
-      const res = await axios.post("/auth/login", formData);
+      const res = await instance.post("/auth/login", formData);
 
       const { token, user } = res.data;
 

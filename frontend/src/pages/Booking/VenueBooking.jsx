@@ -24,7 +24,7 @@ const VenueBooking = () => {
     useEffect(() => {
         const fetchVenue = async () => {
             try {
-                const res = await axios.get(`/user/venues/${id}`);
+                const res = await axios.get(`/user/wedding_hall/${id}`);
                 setVenue(res.data.venue);
             } catch (err) {
                 setError("Failed to load venue");
@@ -33,7 +33,7 @@ const VenueBooking = () => {
 
         const fetchBookedDates = async () => {
             try {
-                const res = await axios.get(`/user/venues/${id}/booked-dates`);
+                const res = await axios.get(`/user/wedding_hall/${id}/booked-dates`);
                 setBookedDates(res.data.bookedDates || []);
             } catch (err) {
                 console.error("Failed to load booked dates", err);
@@ -77,7 +77,7 @@ const VenueBooking = () => {
 
         try {
             const response = await axios.post(
-                `/user/venues/${id}/book`,
+                `/user/wedding_hall/${id}/book`,
                 bookingData,
                 {
                     headers: {

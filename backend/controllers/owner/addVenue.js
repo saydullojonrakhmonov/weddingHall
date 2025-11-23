@@ -13,7 +13,7 @@ const createVenueByOwner = async (req, res) => {
     await client.query('BEGIN');
 
     const insertVenueQuery = `
-      INSERT INTO venues (name, address, seat_price, capacity, phone_number, status, owner_id, district_id)
+      INSERT INTO venue (name, address, seat_price, capacity, phone_number, status, owner_id, district_id)
       VALUES ($1, $2, $3, $4, $5, 'pending', $6, $7)
       RETURNING id;
     `;

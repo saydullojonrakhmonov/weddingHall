@@ -7,7 +7,7 @@ const deleteBooking = async (req, res) => {
     const checkQuery = `
       SELECT b.id, v.user_id
       FROM bookings b
-      JOIN venues v ON b.venue_id = v.id
+      JOIN venue v ON b.venue_id = v.id
       WHERE b.id = $1
     `;
     const checkResult = await pool.query(checkQuery, [bookingId]);

@@ -9,7 +9,7 @@ const approveVenue = async (req, res) => {
       `SELECT 
          v.*, 
          d.name 
-       FROM venues v
+       FROM venue v
        LEFT JOIN district d ON v.district_id = d.id
        WHERE v.id = $1`,
       [id]
@@ -21,7 +21,7 @@ const approveVenue = async (req, res) => {
 
     //  Update status to 'approved'
     const update = await pool.query(
-      `UPDATE venues
+      `UPDATE venue
        SET status = 'approved',
            updated_at = NOW()
        WHERE id = $1

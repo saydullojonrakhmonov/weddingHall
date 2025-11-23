@@ -1,15 +1,15 @@
 import express from 'express';
 import uploadMiddleware from '../middlewares/uploadMiddleware.js';
 import checkRole from '../middlewares/checkRole.js';
+import getOwnerVenues from '../controllers/owner/getOwnVenues.js';
+import getVenueById from '../controllers/owner/getVenue.js';
+import getAllBookings from '../controllers/owner/getAllBookings.js';
+import createVenueByOwner from '../controllers/owner/addVenue.js';
+import updateVenue from '../controllers/owner/updateVenue.js';
+import cancelBooking from '../controllers/owner/cancelBooking.js';
+import deleteBooking from '../controllers/owner/deleteBooking.js';
 
 // Controllers
-import deleteBooking from '../controllers/owner/deleteBooking.js';
-import createVenueByOwner from '../controllers/owner/addVenue.js';
-import getOwnerVenues from '../controllers/owner/getOwnVenues.js';
-import updateVenue from '../controllers/owner/updateVenue.js';
-import getVenueById from '../controllers/owner/getVenue.js';
-import getAllBookings from '../controllers/owner/getVenuesBookings.js';
-import cancelBooking from '../controllers/owner/cancelBooking.js';
 
 const router = express.Router();
 
@@ -28,4 +28,4 @@ router.put("/bookings/:id/cancel", cancelBooking);
 
 router.delete("/bookings/:id", deleteBooking);
 
-export default router; // ✅ make sure to export `router`, not `ownerRouter`
+export default router; 

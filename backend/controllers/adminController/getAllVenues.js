@@ -56,9 +56,9 @@ const getAllVenues = async (req, res) => {
           ORDER BY i.id
           LIMIT 1
         ) AS preview_image
-      FROM venues v
+      FROM venue v
       LEFT JOIN district d ON v.district_id = d.id
-      LEFT JOIN "user" u ON v.owner_id = u.id
+      LEFT JOIN users u ON v.owner_id = u.id
       WHERE v.status IN ('approved', 'pending', 'booked')
       ${whereClause}
       ORDER BY ${field} ${order};

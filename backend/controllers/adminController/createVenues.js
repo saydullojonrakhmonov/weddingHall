@@ -2,7 +2,7 @@ import pool from '../../config/db.js';
 
 
 
-const createVenues = async (req, res) => {
+const createvenue = async (req, res) => {
   const { name, address, seat_price, capacity, phone_number, owner_id, district_id } = req.body;
 
   if (!name || !address || !seat_price || !phone_number || !owner_id || !district_id) {
@@ -15,7 +15,7 @@ const createVenues = async (req, res) => {
     await client.query('BEGIN');
 
     const insertVenueQuery = `
-      INSERT INTO venues (name, address, seat_price, capacity, phone_number, owner_id, district_id, status)
+      INSERT INTO venue (name, address, seat_price, capacity, phone_number, user_id, district_id, status)
       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
       RETURNING id
     `;
@@ -55,4 +55,4 @@ const createVenues = async (req, res) => {
   }
 };
 
-export default  createVenues;
+export default  createvenue;

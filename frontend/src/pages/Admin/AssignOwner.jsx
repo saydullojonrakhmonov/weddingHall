@@ -2,19 +2,19 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../utils/axiosInstance';
 
 const AssignOwner = () => {
-  const [venues, setVenues] = useState([]);
+  const [wedding_hall, setwedding_hall] = useState([]);
   const [owners, setOwners] = useState([]);
   const [selectedVenue, setSelectedVenue] = useState('');
   const [selectedOwner, setSelectedOwner] = useState('');
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
 
-  // Fetch venues and owners
+  // Fetch wedding_hall and owners
   useEffect(() => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem('token');
-        const [venuesRes, ownersRes] = await Promise.all([
+        const [wedding_hallRes, ownersRes] = await Promise.all([
           axios.get('/admin/venues', {
             headers: { Authorization: `Bearer ${token}` },
           }),
@@ -22,11 +22,11 @@ const AssignOwner = () => {
             headers: { Authorization: `Bearer ${token}` }
           })          
         ]);
-        setVenues(venuesRes.data);
+        setwedding_hall(wedding_hallRes.data);
         setOwners(ownersRes.data.owners);
       } catch (err) {
         console.error(err);
-        setError('Failed to load venues or owners.');
+        setError('Failed to load venue or owners.');
       }
     };
 
@@ -44,9 +44,10 @@ const AssignOwner = () => {
   
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`/admin/venues/${selectedVenue}/assign`, { user_id: selectedOwner }, {
-        headers: { Authorization: `Bearer ${token}` }
-      });      
+      await axios.put(`/admin/venues/${selectedVenue}/assign`, 
+  { user_id: selectedOwner }, 
+  { headers: { Authorization: `Bearer ${token}` } }
+)
       setMessage('Owner assigned successfully.');
     } catch (err) {
       console.error(err);
@@ -70,7 +71,7 @@ const AssignOwner = () => {
           onChange={(e) => setSelectedVenue(e.target.value)}
         >
           <option value="">Choose a venue</option>
-          {venues.map((v) => (
+          {wedding_hall.map((v) => (
             <option key={v.id} value={v.id}>
               {v.name} ({v.address})
             </option>

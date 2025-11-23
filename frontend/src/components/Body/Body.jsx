@@ -22,10 +22,10 @@ function Body() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/user/venues");
-        const venues = response.data;
-        setData(venues);
-        setFilteredData(venues);
+        const response = await axios.get("/user/wedding_hall");
+        const wedding_hall = response.data;
+        setData(wedding_hall);
+        setFilteredData(wedding_hall);
         console.log(response);
 
       } catch (error) {
@@ -67,13 +67,13 @@ function Body() {
 
   return (
     <div className="mx-auto px-4 py-10 pt-20 bg-gradient-to-br from-pink-50 to-white min-h-screen">
-      <h1 className="text-3xl font-bold text-center text-pink-600 mb-10">Explore Wedding Venues</h1>
+      <h1 className="text-3xl font-bold text-center text-pink-600 mb-10">Explore Wedding wedding_hall</h1>
       <div className="flex flex-wrap justify-center gap-4 mb-8">
         <div className="relative w-full sm:w-64">
           <FontAwesomeIcon icon={faSearch} className="absolute left-3 top-3 text-gray-400" />
           <input
             type="text"
-            placeholder="Search venues..."
+            placeholder="Search wedding_hall..."
             className="w-full pl-10 pr-4 py-2 border rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-300"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -129,7 +129,7 @@ function Body() {
           {filteredData.map((venue) => (
             <div
               key={venue.id}
-              onClick={() => navigate(`/venues/${venue.id}`)}
+              onClick={() => navigate(`/wedding_hall/${venue.id}`)}
               className="backdrop-blur-lg bg-white/70 shadow-xl rounded-2xl overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-pink-300"
             >
               <img
@@ -149,7 +149,7 @@ function Body() {
           ))}
         </div>
       ) : (
-        <p className="text-gray-600 text-center">No venues found.</p>
+        <p className="text-gray-600 text-center">No wedding_hall found.</p>
       )}
     </div>
   );

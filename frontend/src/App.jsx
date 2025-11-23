@@ -25,8 +25,8 @@ const App = () => {
           <Route path="/owner/*" element={<OwnerRoutes />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path='/venues/:id' element={<VenueDetail />} />
-          <Route path="/venues/:id/book" element={<VenueBooking />} />
+          <Route path='/venue/:id' element={<VenueDetail />} />
+          <Route path="/venue/:id/book" element={<VenueBooking />} />
           <Route path='/bookings' element={<MyBookings />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/about' element={<About />} />

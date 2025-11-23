@@ -6,14 +6,14 @@ const deleteVenue = async (req, res) => {
 
   try {
     // Check venue 
-    const result = await pool.query(`SELECT * FROM venues WHERE id = $1`, [id]);
+    const result = await pool.query(`SELECT * FROM venue WHERE id = $1`, [id]);
 
     if (result.rows.length === 0) {
       return res.status(404).json({ message: "Venue not found" });
     }
 
     // Delete venue
-    await pool.query(`DELETE FROM venues WHERE id = $1`, [id]);
+    await pool.query(`DELETE FROM venue WHERE id = $1`, [id]);
     res.status(200).json({ message: "Venue deleted successfully" });
   } catch (error) {
     console.error(error);

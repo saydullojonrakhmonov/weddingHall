@@ -10,7 +10,7 @@ const BookingCalendar = ({ venueId, selectedDate, onDateChange }) => {
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const res = await axios.get(`user/venues/${venueId}/bookings`);
+        const res = await axios.get(`user/wedding_hall/${venueId}/bookings`);
         setBookedDates(res.data.bookings);
       } catch (err) {
         console.error("Failed to fetch bookings", err);

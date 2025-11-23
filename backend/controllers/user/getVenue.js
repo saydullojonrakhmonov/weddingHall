@@ -4,21 +4,21 @@ const getVenue = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const venueQuery = `SELECT * FROM wedding_hall WHERE id = $1 AND status = 'approved'`;
-    const wedding_hallResult = await pool.query(venueQuery, [id]);
+    const venueQuery = `SELECT * FROM venue WHERE id = $1 AND status = 'approved'`;
+    const venueResult = await pool.query(venueQuery, [id]);
 
     if (venueResult.rows.length === 0) {
       return res.status(404).json({ error: 'Wedding hall not found' });
     }
 
-    const wedding_hall =wedding_hallResult.rows[0];
+    const venue =venueResult.rows[0];
 
-    const imageQuery = `SELECT image_path FROM images WHERE wedding_hall_id = $1`;
+    const imageQuery = `SELECT image_path FROM images WHERE venue_id = $1`;
     const imageResult = await pool.query(imageQuery, [id]);
     const images = imageResult.rows;
 
     res.json({
-      wedding_hall,
+      venue,
       images,
     });
   } catch (error) {

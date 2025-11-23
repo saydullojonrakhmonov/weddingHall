@@ -1,7 +1,7 @@
 import pool from '../../config/db.js';
 
 
-const getUnapprovedVenues = async (req, res) => {
+const getUnapprovedVenue = async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT 
@@ -16,7 +16,7 @@ const getUnapprovedVenues = async (req, res) => {
         d.name AS district_name,   
         u.first_name, 
         u.last_name
-      FROM venues v
+      FROM venue v
       JOIN "user" u ON v.owner_id = u.id
       LEFT JOIN district d ON v.district_id = d.id  
       WHERE v.status = 'pending'
@@ -24,11 +24,11 @@ const getUnapprovedVenues = async (req, res) => {
     `);
     
 
-    res.status(200).json({ venues: result.rows });
+    res.status(200).json({ venue: result.rows });
   } catch (error) {
-    console.error('Error fetching unapproved venues:', error);
+    console.error('Error fetching unapproved venue:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
 
-export default  getUnapprovedVenues;
+export default  getUnapprovedVenue;

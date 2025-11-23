@@ -1,6 +1,6 @@
 import pool from '../../config/db.js';
 
-const getAllVenues = async (req, res) => {
+const getAllVenue = async (req, res) => {
   const { price, capacity, district, search } = req.query;
 
   try {
@@ -20,7 +20,7 @@ const getAllVenues = async (req, res) => {
     ORDER BY i.id
     LIMIT 1
   ) AS preview_image
-FROM venues v
+FROM venue v
 LEFT JOIN district d ON v.district_id = d.id
 WHERE v.status = 'approved'`;
     let params = [];
@@ -55,4 +55,4 @@ WHERE v.status = 'approved'`;
   }
 };
 
-export default  getAllVenues;
+export default  getAllVenue;

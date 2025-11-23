@@ -2,25 +2,25 @@ import React, { useEffect, useState } from 'react';
 import axios from '../../utils/axiosInstance'; 
 
 const ApproveVenue = () => {
-  const [venues, setVenues] = useState([]);
+  const [wedding_hall, setwedding_hall] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [approvingIds, setApprovingIds] = useState([]); 
 
-  // Fetch unapproved venues
-  const fetchUnapprovedVenues = async () => {
+  // Fetch unapproved wedding_hall
+  const fetchUnapprovedwedding_hall = async () => {
     setLoading(true);
     setError('');
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('/admin/venues/unapproved', {
+      const response = await axios.get('/admin/venue/unapproved', {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log(response);
       
-      setVenues(response.data.venues);
+      setwedding_hall(response.data.wedding_hall);
     } catch (err) {
-      setError('Failed to load venues');
+      setError('Failed to load wedding_hall');
       console.error(err);
     } finally {
       setLoading(false);
@@ -28,7 +28,7 @@ const ApproveVenue = () => {
   };
 
   useEffect(() => {
-    fetchUnapprovedVenues();
+    fetchUnapprovedwedding_hall();
   }, []);
 
 // Approve venue
@@ -38,13 +38,13 @@ const ApproveVenue = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.put(
-        `/admin/venues/${id}/approve`,
+        `/admin/wedding_hall/${id}/approve`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      setVenues((prevVenues) => prevVenues.filter((v) => v.id !== id));
+      setwedding_hall((prevwedding_hall) => prevwedding_hall.filter((v) => v.id !== id));
     } catch (err) {
       setError('Failed to approve venue. Try again.');
       console.error(err);
@@ -53,15 +53,15 @@ const ApproveVenue = () => {
     }
   };
 
-  if (loading) return <p>Loading pending venues...</p>;
+  if (loading) return <p>Loading pending wedding_hall...</p>;
   if (error) return <p className="text-red-600">{error}</p>;
-  if (venues.length === 0) return <p>No pending venues to approve.</p>;
+  if (wedding_hall.length === 0) return <p>No pending wedding_hall to approve.</p>;
 
   return (
     <div className="max-w-5xl mx-auto p-4">
-      <h2 className="text-3xl font-bold mb-6 text-pink-600">Approve Venues</h2>
+      <h2 className="text-3xl font-bold mb-6 text-pink-600">Approve wedding_hall</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {venues.map((venue) => (
+        {wedding_hall.map((venue) => (
           <div key={venue.id} className="border rounded p-4 shadow">
             <h3 className="text-xl font-semibold mb-2">{venue.name}</h3>
             <p><strong>Address:</strong> {venue.address}</p>

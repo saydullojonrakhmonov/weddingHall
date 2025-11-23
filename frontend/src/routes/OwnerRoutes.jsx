@@ -14,7 +14,7 @@ function OwnerRoutes() {
         <Route element={<OwnerLayout />}>
           <Route index element={<OwnerDashboard />} />
           <Route path='add-venue' element={<OwnerCreateVenue />} />
-          <Route path='own-venues' element={<OwnVenues />} />
+          <Route path='venues' element={<OwnVenues />} />
           <Route path="edit-venue/:id" element={<UpdateVenue />} />
           <Route path="all-booking" element={<AllBooking />} />
         </Route>

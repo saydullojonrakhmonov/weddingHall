@@ -15,7 +15,7 @@ const VenueDetail = () => {
     useEffect(() => {
         const fetchVenue = async () => {
             try {
-                const res = await axios.get(`/user/venues/${id}`);
+                const res = await axios.get(`/user/wedding_hall/${id}`);
                 setVenue(res.data.venue);
                 setImages(res.data.images);
                 console.log(res);
@@ -37,7 +37,7 @@ const VenueDetail = () => {
         if (!token) {
           navigate('/login');
         } else {
-          navigate(`/venues/${id}/book`);
+          navigate(`/wedding_hall/${id}/book`);
         }
       };
       

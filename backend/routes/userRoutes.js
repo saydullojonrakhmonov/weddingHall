@@ -6,7 +6,7 @@ import checkRole from '../middlewares/checkRole.js';
 import getAllVenues from '../controllers/user/getVenues.js';
 import getVenue from '../controllers/user/getVenue.js';
 import bookVenue from '../controllers/user/bookVenue.js';
-import getUserBookings from '../controllers/user/getOwnBookedVenues.js';
+import getUserBookings from '../controllers/user/getUserBookings.js';
 import  getBookedDates  from '../controllers/user/bookedDates.js';
 import loginUser from '../controllers/user/login.js';
 import registerUser from '../controllers/user/registerUser.js';

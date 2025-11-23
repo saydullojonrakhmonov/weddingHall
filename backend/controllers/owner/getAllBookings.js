@@ -17,21 +17,21 @@ const getAllBookings = async (req, res) => {
 
   try {
     const query = `
-      SELECT 
-        b.id,
-        b.reservation_date,
-        b.status,
-        b.guest_amount,
-        b.first_name,
-        b.phone_number,
-        v.name AS venue_name,
-        d.name AS district_name
-      FROM booking b
-      INNER JOIN venues v ON b.venue_id = v.id
-      INNER JOIN district d ON v.district_id = d.id
-      WHERE v.owner_id = $1
-      ORDER BY ${sortColumn} ${sortOrder}
-    `;
+  SELECT 
+    b.id,
+    b.reservation_date,
+    b.status,
+    b.guest_amount,
+    b.client_phone,
+    v.name AS venue_name,
+    d.name AS district_name
+  FROM booking b
+  INNER JOIN venue v ON b.venue_id = v.id
+  INNER JOIN district d ON v.district_id = d.id
+  WHERE v.owner_id = $1
+  ORDER BY ${sortColumn} ${sortOrder}
+`;
+
 
     const result = await pool.query(query, [ownerId]);
 

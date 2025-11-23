@@ -22,7 +22,7 @@ const AdminSidebar = () => {
   const links = [
     { to: '/admin/add-venue', label: 'Add Venue', icon: faPlus },
     { to: '/admin/add-owner', label: 'Add Owner', icon: faUserPlus },
-    { to: '/admin/all-venues', label: 'All Venues', icon: faBuilding },
+    { to: '/admin/venues', label: 'All venues', icon: faBuilding },
     { to: '/admin/all-owners', label: 'All Owners', icon: faUsers },
     { to: '/admin/assign-owner', label: 'Assign Owner', icon: faAdd },
     { to: '/admin/all-booking', label: 'All Booking', icon: faCalendarCheck },

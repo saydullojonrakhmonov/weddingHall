@@ -1,4 +1,4 @@
-import axios from '../../utils/axiosInstance';
+ import axios from '../../utils/axiosInstance';
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -33,7 +33,7 @@ const AllVenues = () => {
 
   useEffect(() => {
     fetchVenues();
-  }, [searchTerm, sortField, sortOrder, filterStatus, filterDistrict]);
+  }, [searchTerm, sortField, sortOrder, filterStatus, filterDistrict, token]);
 
   const fetchVenues = async () => {
     try {

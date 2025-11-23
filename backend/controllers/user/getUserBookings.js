@@ -17,7 +17,7 @@ const getUserBookings = async (req, res) => {
         v.phone_number,
         v.seat_price
       FROM booking b
-      JOIN venues v ON b.venue_id = v.id
+      JOIN venue v ON b.venue_id = v.id
       WHERE b.user_id = $1
       ORDER BY b.reservation_date DESC
     `;

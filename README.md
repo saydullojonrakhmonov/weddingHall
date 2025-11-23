@@ -19,7 +19,7 @@ CREATE TABLE district (
 );
 
 
-CREATE TABLE venues (
+CREATE TABLE wedding_hall (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   address TEXT NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE venues (
 CREATE TABLE images (
   id SERIAL PRIMARY KEY,
   image_path TEXT NOT NULL,
-  venue_id INTEGER REFERENCES venues(id) ON DELETE CASCADE
+  venue_id INTEGER REFERENCES wedding_hall(id) ON DELETE CASCADE
 );
 
 
@@ -47,14 +47,14 @@ CREATE TABLE booking (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   status VARCHAR(20) CHECK (status IN ('pending', 'confirmed', 'cancelled')) DEFAULT 'pending',
-  venue_id INTEGER REFERENCES venues(id) ON DELETE CASCADE,
+  venue_id INTEGER REFERENCES wedding_hall(id) ON DELETE CASCADE,
   phone_number VARCHAR(20) NOT NULL,
   user_id INTEGER REFERENCES user(id) ON DELETE SET NULL
 );
 
 
 Notes:
-- The status columns in venues and booking use CHECK constraints for allowed values.
+- The status columns in wedding_hall and booking use CHECK constraints for allowed values.
 - ON DELETE rules are chosen to avoid orphan records: SET NULL for owner_id, and CASCADE for child records like images and booking.
 - You can tweak types (e.g., VARCHAR length or NUMERIC precision) based on your application's requirements.
 

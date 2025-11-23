@@ -24,7 +24,7 @@ const assignOwner = async (req, res) => {
 
 // update venue owner
     const result = await pool.query(
-      'UPDATE venues SET owner_id = $1 WHERE id = $2 RETURNING *',
+      'UPDATE venue SET owner_id = $1 WHERE id = $2',
       [user_id, venueId]
     );
 

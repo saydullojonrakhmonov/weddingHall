@@ -13,7 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const navItems = [
   { to: '/owner', label: 'Dashboard', icon: faHome },
   { to: '/owner/add-venue', label: 'Create Venue', icon: faPlus },
-  { to: '/owner/own-venues', label: 'My Venues', icon: faBuilding },
+  { to: '/owner/venues', label: 'My venues', icon: faBuilding },
   { to: '/owner/all-booking', label: 'All Booking', icon: faCalendarCheck },
   { to: '/login', label: 'Logout', icon: faSignOutAlt },
 ];

@@ -23,7 +23,7 @@ const UpdateVenue = () => {
   useEffect(() => {
     const fetchVenue = async () => {
       try {
-        const res = await axios.get(`/admin/venues/${id}`, {
+        const res = await axios.get(`/admin/venue/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -60,10 +60,10 @@ const UpdateVenue = () => {
     setLoading(true);
 
     try {
-      await axios.put(`/admin/venues/${id}`, formData, {
+      await axios.put(`/admin/wedding_hall/${id}`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      navigate('/admin/all-venues');
+      navigate('/admin/all-wedding_hall');
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to update venue.');
       console.error(err);

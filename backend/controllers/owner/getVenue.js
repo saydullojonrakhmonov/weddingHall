@@ -5,7 +5,7 @@ const getVenueById = async (req, res) => {
 
   try {
     const query = `
-      SELECT * FROM venues
+      SELECT * FROM venue
       WHERE id = $1;
     `;
     const result = await pool.query(query, [venueId]);

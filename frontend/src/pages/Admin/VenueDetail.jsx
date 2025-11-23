@@ -32,7 +32,7 @@ const VenueDetails = ({ venue, onClose }) => {
 
   const fetchBookings = async () => {
     try {
-      const res = await axios.get(`/admin/venues/${venue.id}/bookings`, {
+      const res = await axios.get(`/admin/venue/${venue.id}/bookings`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setBookings(res.data);

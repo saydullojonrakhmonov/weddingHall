@@ -23,7 +23,7 @@ const UpdateVenue = () => {
         const fetchVenue = async () => {
             setLoading(true);
             try {
-                const res = await axios.get(`/owner/venues/${id}`, {
+                const res = await axios.get(`/owner/wedding_hall/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -48,13 +48,13 @@ const UpdateVenue = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.put(`/owner/venues/${id}`, formData, {
+            const res = await axios.put(`/owner/wedding_hall/${id}`, formData, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             });
             setMessage(res.data.message);
-            navigate('/owner/own-venues');
+            navigate('/owner/own-wedding_hall');
         } catch (err) {
             console.error(err);
             setError('Failed to update venue');

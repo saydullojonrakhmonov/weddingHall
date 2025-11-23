@@ -14,7 +14,7 @@ import getAllOwners from "../controllers/adminController/viewAllOwners.js";
 import updateVenue from "../controllers/adminController/updateVenue.js";
 import getAllBookings from "../controllers/adminController/getAllBooking.js";
 import cancelBooking from "../controllers/adminController/cancelBooking.js";
-import getAllVenues from "../controllers/adminController/viewAllVenues.js";
+import getAllVenues from "../controllers/adminController/getAllVenues.js";
 import getUnapprovedVenues from "../controllers/adminController/getUnapproveVenue.js";
 import getVenueBookings from "../controllers/adminController/getVenueBooking.js";
 
@@ -27,17 +27,19 @@ router.use(checkRole(["admin"]));
 router.post("/owners", createOwner);
 router.get("/owners", getAllOwners);
 
-// Venues
+// Venues get
 router.get("/venues", getAllVenues);
-router.post("/venues", uploadMiddleware, createVenues);
 router.get("/venues/filter", filterVenue);
 router.get("/venues/unapproved", getUnapprovedVenues);
+router.get("/bookings", getAllBookings);
+router.get("/venues/:id/bookings", getVenueBookings);
 router.get("/venues/:id", viewVenue);
+
+// create venue
+router.post("/venues", uploadMiddleware, createVenues);
 router.put("/venues/:id", updateVenue);
 router.delete("/venues/:id", deleteVenue);
-router.get("/bookings", getAllBookings);
 router.put("/bookings/:id/cancel", cancelBooking);
-router.get("/venues/:id/bookings", getVenueBookings);
 router.put("/venues/:id/approve", approveVenue);
 router.put("/venues/:id/assign", assignOwner);
 

@@ -13,44 +13,44 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
-const OwnVenues = () => {
-  const [venues, setVenues] = useState([]);
+const OwnVenue = () => {
+  const [venue, setVenue] = useState([]);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    const fetchVenues = async () => {
+    const fetchVenue = async () => {
       try {
         const res = await axios.get('/owner/venues', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
-        setVenues(res.data.venues);
+        setVenue(res.data.venue);
       } catch (err) {
-        console.error('Failed to fetch venues:', err);
-        setError('Failed to load your venues');
+        console.error('Failed to fetch venue:', err);
+        setError('Failed to load your venue');
       }
     };
 
-    fetchVenues();
+    fetchVenue();
   }, [token]);
 
   return (
     <div className="w-full min-h-screen font-serif bg-pink-50 m-0 p-0 overflow-hidden">
       <h2 className="text-3xl font-bold text-center text-pink-700 py-8 tracking-wide">
-        My Wedding Venues
+        My Wedding venue
       </h2>
 
       {error && <p className="text-red-600 text-center mb-6">{error}</p>}
 
-      {venues.length === 0 ? (
-        <p className="text-gray-600 text-center text-lg">You haven't created any venues yet.</p>
+      {venue.length === 0 ? (
+        <p className="text-gray-600 text-center text-lg">You haven't created any venue yet.</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {venues.map((venue) => (
+          {venue.map((venue) => (
             <div
               key={venue.id}
               className="bg-white rounded-2xl border border-pink-100 shadow-lg p-6 hover:shadow-xl transition-all"
@@ -105,4 +105,4 @@ const OwnVenues = () => {
   );
 };
 
-export default OwnVenues;
+export default OwnVenue;

@@ -19,7 +19,7 @@ const updateVenue = async (req, res) => {
 
   try {
     const query = `
-      UPDATE venues
+      UPDATE venue
       SET name = $1,
           address = $2,
           seat_price = $3,
