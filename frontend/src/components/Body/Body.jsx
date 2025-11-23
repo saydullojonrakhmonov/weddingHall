@@ -22,7 +22,7 @@ function Body() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/user/wedding_hall");
+        const response = await axios.get("/user/venues");
         const wedding_hall = response.data;
         setData(wedding_hall);
         setFilteredData(wedding_hall);

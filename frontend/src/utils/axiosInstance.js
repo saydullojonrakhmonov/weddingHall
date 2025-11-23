@@ -5,12 +5,24 @@ const instance = axios.create({
   baseURL: 'http://localhost:10000',
 });
 
+// Attach token to every request
+instance.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+// Handle 401/403 globally
 instance.interceptors.response.use(
-  (response) => response, 
+  (response) => response,
   (error) => {
     if (error.response?.status === 403 || error.response?.status === 401) {
-      localStorage.removeItem('token'); 
-      window.location.href = '/login';  
+      localStorage.removeItem('token');
+      localStorage.removeItem('user_id');
+      localStorage.removeItem('role');
+      window.location.href = '/login';
     }
     return Promise.reject(error);
   }
