@@ -6,7 +6,7 @@ import NoPage from './pages/NotFound/NoPage';
 import VenueDetail from './components/VenueDetail/VenueDetail';
 import VenueBooking from './pages/Booking/VenueBooking';
 import Register from './pages/User/Register';
-import MyBookings from './pages/User/MyBookings';
+import MyBookings from './pages/User/MyBookings.jsx';
 import AdminRoutes from './routes/AdminRoutes';
 import OwnerRoutes from './routes/OwnerRoutes';
 import Contact from './pages/Contact/Contact';
