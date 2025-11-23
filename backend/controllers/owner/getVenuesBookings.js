@@ -3,7 +3,7 @@ import pool from '../../config/db.js';
 const getAllBookings = async (req, res) => {
   const ownerId = req.user.id; 
 
-  const { sort = 'b.date', order = 'asc' } = req.query;
+  const { sort = 'reservation_date', order = 'asc' } = req.query;
 
   const validSortColumns = {
     reservation_date: 'b.reservation_date',
@@ -12,7 +12,7 @@ const getAllBookings = async (req, res) => {
     status: 'b.status',
   };
 
-  const sortColumn = validSortColumns[sort] || 'b.date';
+  const sortColumn = validSortColumns[sort] || 'b.reservation_date';
   const sortOrder = order === 'desc' ? 'DESC' : 'ASC';
 
   try {

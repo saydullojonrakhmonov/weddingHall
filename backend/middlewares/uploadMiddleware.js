@@ -1,7 +1,7 @@
 
 import multer from 'multer'
 
-const allowedTypes = ['image/png', 'image/jpeg', 'image/webp', 'image/afiv']
+const allowedTypes = ['image/png', 'image/jpeg', 'image/webp', 'image/avif']
 
 const uploadStorage = multer.diskStorage({
     destination: (req, file, cb) => {
@@ -17,7 +17,7 @@ const fileFilter = (req, file, cb) =>{
         cb(null, true)
     }
     else{
-        cb(new Error('Only PNG, JPEG and WEBP images are allowed'), false)
+        cb(new Error('Only PNG, JPEG, WEBP and AVIF images are allowed'), false)
     }
 }
 

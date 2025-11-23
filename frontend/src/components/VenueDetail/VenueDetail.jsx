@@ -51,7 +51,7 @@ const VenueDetail = () => {
                 {images.map((img, idx) => (
                     <img
                         key={idx}
-                        src={`http://localhost:3000/uploads/${img.image_path}`}
+                        src={`http://localhost:10000/uploads/${img.image_path}`}
                         alt={`venue-${idx}`}
                         className="w-full h-72 sm:h-80 object-cover rounded-3xl shadow-md hover:scale-105 transition-transform duration-300"
                     />

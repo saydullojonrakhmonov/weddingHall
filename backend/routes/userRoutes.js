@@ -3,8 +3,8 @@ import authentication from '../middlewares/authentication.js';
 import checkRole from '../middlewares/checkRole.js';
 
 
-import getAllVenues from '../controllers/user/getVanues.js';
-import getVenue from '../controllers/user/getVanue.js';
+import getAllVenues from '../controllers/user/getVenues.js';
+import getVenue from '../controllers/user/getVenue.js';
 import bookVenue from '../controllers/user/bookVenue.js';
 import getUserBookings from '../controllers/user/getOwnBookedVenues.js';
 import  getBookedDates  from '../controllers/user/bookedDates.js';

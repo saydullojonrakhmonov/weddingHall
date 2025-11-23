@@ -20,7 +20,7 @@ const Register = () => {
         e.preventDefault();
         console.log("Submitting:", formData);
         try {
-            const res = await axios.post("http://localhost:3000/user/register", formData);
+            const res = await axios.post("/user/register", formData);
             console.log("✅ Registered:", res.data);
             navigate("/login"); 
         } catch (err) {

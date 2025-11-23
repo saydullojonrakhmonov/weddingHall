@@ -160,7 +160,7 @@ const AllVenues = () => {
               onClick={() => setSelectedVenue(venue)}
             >
               <img
-                src={`http://localhost:3000/uploads/${venue.preview_image || 'default.jpg'}`}
+                src={`http://localhost:10000/uploads/${venue.preview_image || 'default.jpg'}`}
                 alt={venue.name}
                 className="w-full h-48 object-cover rounded mb-4"
               />

@@ -1,16 +1,15 @@
-import jwt from 'jsonwebtoken';
-import bcrypt from 'bcrypt';
-import pool from '../../config/db.js';
-import dotenv from 'dotenv'
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import pool from "../../config/db.js";
+import dotenv from "dotenv";
 dotenv.config();
 
 const login = async (req, res) => {
   try {
     const { user_name, password } = req.body;
 
-
     const result = await pool.query(
-      'SELECT * FROM "user" WHERE user_name = $1',
+      "SELECT * FROM users WHERE user_name = $1",
       [user_name]
     );
 
@@ -19,15 +18,13 @@ const login = async (req, res) => {
       return res.status(404).json({ message: "Invalid username or password" });
     }
 
-    const user = result.rows[0];
-
+    const users = result.rows[0];
 
     const cleanPassword = password.trim();
-    const cleanHash = user.password.trim();
+    const cleanHash = users.password.trim();
 
     // Compare passwords
     const passwordMatch = await bcrypt.compare(cleanPassword, cleanHash);
-
 
     if (!passwordMatch) {
       return res.status(401).json({ message: "Invalid username or password" });
@@ -35,25 +32,24 @@ const login = async (req, res) => {
 
     // Generate JWT token
     const token = jwt.sign(
-      { 
-        id: user.id, 
-        username: user.user_name,
-        role: user.role 
+      {
+        id: users.id,
+        username: users.user_name,
+        role: users.role,
       },
       process.env.SECRET_KEY,
       { expiresIn: "1h" }
     );
 
-
     res.status(200).json({
       message: "Login successful",
       token,
       user: {
-        id: user.id,
-        firstname: user.first_name,
-        lastname: user.last_name,
-        username: user.user_name,
-        role: user.role,
+        id: users.id,
+        firstname: users.first_name,
+        lastname: users.last_name,
+        username: users.user_name,
+        role: users.role,
       },
     });
   } catch (err) {
@@ -62,4 +58,4 @@ const login = async (req, res) => {
   }
 };
 
-export default  login;
+export default login;

@@ -6,7 +6,7 @@ import checkRole from '../middlewares/checkRole.js';
 import deleteBooking from '../controllers/owner/deleteBooking.js';
 import createVenueByOwner from '../controllers/owner/addVenue.js';
 import getOwnerVenues from '../controllers/owner/getOwnVenues.js';
-import updateVenue from '../controllers/owner/updateVanue.js';
+import updateVenue from '../controllers/owner/updateVenue.js';
 import getVenueById from '../controllers/owner/getVenue.js';
 import getAllBookings from '../controllers/owner/getVenuesBookings.js';
 import cancelBooking from '../controllers/owner/cancelBooking.js';

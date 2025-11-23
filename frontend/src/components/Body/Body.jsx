@@ -133,7 +133,7 @@ function Body() {
               className="backdrop-blur-lg bg-white/70 shadow-xl rounded-2xl overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-pink-300"
             >
               <img
-                src={`http://localhost:3000/uploads/${venue.preview_image || 'default.jpg'}`}
+                src={`http://localhost:10000/uploads/${venue.preview_image || 'default.jpg'}`}
                 alt={venue.name}
                 className="w-full h-56 object-cover"
               />

@@ -8,7 +8,7 @@ import AdminDashboard from '../pages/Admin' // this is index.jsx
 import ApproveVenue from '../pages/Admin/ApproveVenue'
 import AllBooking from '../pages/Admin/AllBooking'
 import AllOwners from '../pages/Admin/AllOwners'
-import UpdateVenue from '../pages/Admin/UpdateVanue'
+import UpdateVenue from '../pages/Admin/UpdateVenue'
 import AssignOwner from '../pages/Admin/AssignOwner'
 
 function AdminRoutes() {

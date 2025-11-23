@@ -29,7 +29,7 @@ app.use("/auth", authRoutes);
 // Start server inside async function
 const startServer = async () => {
   try {
-    const PORT = process.env.PORT || 3000;
+    const PORT = process.env.PORT || 10000;
     app.listen(PORT, () => {
       console.log(`✅ Server is running on http://localhost:${PORT}`);
     });

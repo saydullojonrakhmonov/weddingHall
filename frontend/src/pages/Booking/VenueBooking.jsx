@@ -33,7 +33,7 @@ const VenueBooking = () => {
 
         const fetchBookedDates = async () => {
             try {
-                const res = await axios.get(`http://localhost:3000/user/venues/${id}/booked-dates`);
+                const res = await axios.get(`/user/venues/${id}/booked-dates`);
                 setBookedDates(res.data.bookedDates || []);
             } catch (err) {
                 console.error("Failed to load booked dates", err);
@@ -77,7 +77,7 @@ const VenueBooking = () => {
 
         try {
             const response = await axios.post(
-                `http://localhost:3000/user/venues/${id}/book`,
+                `/user/venues/${id}/book`,
                 bookingData,
                 {
                     headers: {
