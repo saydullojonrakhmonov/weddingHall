@@ -10,12 +10,13 @@ const VenueDetail = () => {
     const [images, setImages] = useState([]);
     const [error, setError] = useState(null);
 
+  const BASE_URL = import.meta.env.VITE_BASE_URL
     const navigate = useNavigate()
 
     useEffect(() => {
         const fetchVenue = async () => {
             try {
-                const res = await axios.get(`/user/wedding_hall/${id}`);
+                const res = await axios.get(`/user/venue/${id}`);
                 setVenue(res.data.venue);
                 setImages(res.data.images);
                 console.log(res);
@@ -37,7 +38,7 @@ const VenueDetail = () => {
         if (!token) {
           navigate('/login');
         } else {
-          navigate(`/wedding_hall/${id}/book`);
+          navigate(`/venue/${id}/book`);
         }
       };
       
@@ -51,7 +52,7 @@ const VenueDetail = () => {
                 {images.map((img, idx) => (
                     <img
                         key={idx}
-                        src={`http://localhost:10000/uploads/${img.image_path}`}
+                        src={`${BASE_URL}/${img.image_path}`}
                         alt={`venue-${idx}`}
                         className="w-full h-72 sm:h-80 object-cover rounded-3xl shadow-md hover:scale-105 transition-transform duration-300"
                     />
