@@ -18,7 +18,7 @@ const getUserBookings = async (req, res) => {
         v.seat_price
       FROM booking b
       JOIN venue v ON b.venue_id = v.id
-      WHERE b.user_id = $1
+      WHERE b.created_id = $1
       ORDER BY b.reservation_date DESC
     `;
 
@@ -30,4 +30,4 @@ const getUserBookings = async (req, res) => {
   }
 };
 
-export default  getUserBookings;
+export default getUserBookings;
