@@ -19,6 +19,8 @@ function Body() {
   const [sortBy, setSortBy] = useState('');
   const navigate = useNavigate();
 
+  const BASE_URL = import.meta.env.VITE_BASE_URL
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -129,11 +131,11 @@ function Body() {
           {filteredData.map((venue) => (
             <div
               key={venue.id}
-              onClick={() => navigate(`/wedding_hall/${venue.id}`)}
+              onClick={() => navigate(`/vanue/${venue.id}`)}
               className="backdrop-blur-lg bg-white/70 shadow-xl rounded-2xl overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-pink-300"
             >
               <img
-                src={`http://localhost:10000/uploads/${venue.preview_image || 'default.jpg'}`}
+                src={`${BASE_URL}/uploads/${venue.preview_image || 'default.jpg'}`}
                 alt={venue.name}
                 className="w-full h-56 object-cover"
               />
